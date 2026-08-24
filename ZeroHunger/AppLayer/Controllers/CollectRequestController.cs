@@ -70,5 +70,16 @@ namespace AppLayer.Controllers
 
             return Ok(data);
         }
+
+        [HttpPut("collected/{id}")]
+        public IActionResult MarkCollected(int id)
+        {
+            var result = service.MarkCollected(id);
+
+            if (!result)
+                return NotFound();
+
+            return Ok(result);
+        }
     }
 }
