@@ -47,5 +47,16 @@ namespace BLL.Services
         {
             return repo.Delete(id);
         }
+
+        public bool AcceptRequest(int id)
+        {
+            var request = repo.Get(id);
+
+            if (request == null) return false;
+
+            request.Status = "Accepted";
+
+            return repo.Update(request);
+        }
     }
 }

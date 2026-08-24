@@ -50,5 +50,15 @@ namespace AppLayer.Controllers
             var data = service.Delete(id);
             return Ok(data);
         }
+
+        [HttpPut("accept/{id}")]
+        public IActionResult Accept(int id)
+        {
+            var data = service.AcceptRequest(id);
+
+            if (!data) return NotFound();
+
+            return Ok(data);
+        }
     }
 }
