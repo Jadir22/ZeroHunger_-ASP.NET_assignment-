@@ -60,5 +60,15 @@ namespace AppLayer.Controllers
 
             return Ok(data);
         }
+
+        [HttpPut("assign/{requestId}/{employeeId}")]
+        public IActionResult AssignEmployee(int requestId, int employeeId)
+        {
+            var data = service.AssignEmployee(requestId, employeeId);
+
+            if (!data) return NotFound();
+
+            return Ok(data);
+        }
     }
 }

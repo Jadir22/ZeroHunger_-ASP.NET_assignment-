@@ -58,5 +58,16 @@ namespace BLL.Services
 
             return repo.Update(request);
         }
+
+        public bool AssignEmployee(int requestId, int employeeId)
+        {
+            var request = repo.Get(requestId);
+
+            if (request == null) return false;
+
+            request.EmployeeId = employeeId;
+
+            return repo.Update(request);
+        }
     }
 }
