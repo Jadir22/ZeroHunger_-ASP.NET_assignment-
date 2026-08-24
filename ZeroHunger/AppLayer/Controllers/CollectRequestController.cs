@@ -72,14 +72,23 @@ namespace AppLayer.Controllers
         }
 
         [HttpPut("collected/{id}")]
-        public IActionResult MarkCollected(int id)
+        public IActionResult Collected(int id)
         {
-            var result = service.MarkCollected(id);
+            var data = service.Collected(id);
 
-            if (!result)
-                return NotFound();
+            if (!data) return NotFound();
 
-            return Ok(result);
+            return Ok(data);
+        }
+
+        [HttpPut("completed/{id}")]
+        public IActionResult Completed(int id)
+        {
+            var data = service.Completed(id);
+
+            if (!data) return NotFound();
+
+            return Ok(data);
         }
     }
 }

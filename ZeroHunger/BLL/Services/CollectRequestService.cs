@@ -70,13 +70,24 @@ namespace BLL.Services
             return repo.Update(request);
         }
 
-        public bool MarkCollected(int id)
+        public bool Collected(int id)
         {
             var request = repo.Get(id);
 
             if (request == null) return false;
 
             request.Status = "Collected";
+
+            return repo.Update(request);
+        }
+
+        public bool Completed(int id)
+        {
+            var request = repo.Get(id);
+
+            if (request == null) return false;
+
+            request.Status = "Completed";
 
             return repo.Update(request);
         }
