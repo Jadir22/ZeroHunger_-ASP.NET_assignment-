@@ -1,5 +1,7 @@
 using BLL;
+using BLL.Services;
 using DAL.EF;
+using DAL.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<RestaurantRepo>();
+builder.Services.AddScoped<EmployeeRepo>();
+builder.Services.AddScoped<CollectRequestRepo>();
+
+builder.Services.AddScoped<RestaurantService>();
+builder.Services.AddScoped<EmployeeService>();
+builder.Services.AddScoped<CollectRequestService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
